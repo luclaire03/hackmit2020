@@ -5,7 +5,7 @@ let sinceStand = 0;     // time since last standing break, in minutes
 let updateStandTimer = setInterval(function() {
     let now = new Date().getTime();
     sinceStand = Math.round((now - lastStand) / (1000 * 60));
-    // TODO: update HTML
+    document.getElementById('timertext').innerHTML = sinceStand + ' minutes since last standup break';
     if (sinceStand >= standInterval) {
         showStandReminder()
     }
