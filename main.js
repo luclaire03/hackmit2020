@@ -1,9 +1,14 @@
 let standInterval = 30; // in minutes
 let lastStand = new Date().getTime();
 let sinceStand = 0;     // time since last standing break, in minutes
+var reset = false;
 
 let updateStandTimer = setInterval(function() {
     let now = new Date().getTime();
+    if (reset) {
+        lastStand  = now;
+        reset = false;
+    }
     sinceStand = Math.round((now - lastStand) / (1000 * 60));
     document.getElementById('timertext').innerHTML = sinceStand + ' minutes since last standup break';
     if (sinceStand >= standInterval) {
@@ -13,6 +18,10 @@ let updateStandTimer = setInterval(function() {
 
 function showStandReminder() {
     // TODO: display the popup
+}
+
+function resetTime() {
+    reset = true;
 }
 
 function setStand() {
