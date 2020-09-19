@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+    <title>Habit Helper</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div id="intro">
+        <div id="title">
+            <h1>habit helper</h1>
+        </div>
+        <div id="desc">
+            <p>
+                welcome to habit helper! this tool aims to help you build healthy habits via customizable 
+                reminders to stand up and a daily bedtime. 
+            </p>
+        </div>
+    </div>
+
+    <div id="standup">
+        <h3>time between standup reminders (in minutes):</h3>
+        <input type="text" id="standInput" placeholder="30">
+        <span onclick="setStand()" class="setBtn">set</span>
+    </div>
+    <div>
+        <p>you will be reminded to stand every 30 minutes</p>
+    </div>
+
+    <div id="bedtime">
+        <h3>bedtime (in HH:MM):</h3>
+        <input type="text" id="sleepInput" placeholder="10:30">
+        <span onclick="setSleep()" class="setBtn">set</span>
+    </div>
+    <div>
+        <p>you have set your bedtime to: 10:30</p>
+    </div>
+</body>
