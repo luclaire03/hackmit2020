@@ -1,8 +1,8 @@
 <!doctype html>
 <head>
     <title>Habit Helper</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> 
     <script src="main.js"></script>
 </head>
 
@@ -17,6 +17,9 @@
                 reminders to stand up and a daily bedtime. 
             </p>
         </div>
+        <div id="picture">
+            <img src="rabbit.jpg" alt="habit rabbit">
+        </div>
     </div>
 
     <div id="countdown">
@@ -26,25 +29,30 @@
 
     <div id="features">
         <div id="standup">
-            <h3>time between standup reminders (in minutes):</h3>
+            <div class="label">
+                <h3>time between standup reminders (in minutes):</h3>
+            </div>
             <div id="input">
                 <input type="text" id="standInput" placeholder="30">
                 <button onclick="setStand()" class="setBtn">set</button>
             </div>
         </div>
         <div id="standtext" style="display:none;">
-            <p>you will be reminded to stand every 30 minutes</p>
+            <h4>you will be reminded to stand every 30 minutes</h4>
         </div>
 
         <div id="bedtime">
-            <h3>bedtime (format of 24:60):</h3>
+            <div class="label">
+                <h3>bedtime (format of 24:60):</h3>
+            </div>
             <div id="input">
                 <input type="text" id="sleepInput" placeholder="10:30">
                 <button onclick="setSleep()" class="setBtn">set</button>
             </div>
         </div>
         <div id="sleeptext" style="display:none;">
-            <p>you have set your bedtime to: 10:30</p>
+            <h4>you have set your bedtime to: 10:30</h4>
         </div>
     </div>
 </body>
+
