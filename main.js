@@ -2,6 +2,8 @@ let standInterval = 30; // in minutes
 let lastStand = new Date().getTime();
 let sinceStand = 0;     // time since last standing break, in minutes
 
+let bedtime;
+
 let updateStandTimer = setInterval(function() {
     let now = new Date().getTime();
     sinceStand = Math.round((now - lastStand) / (1000 * 60));
@@ -16,12 +18,21 @@ function showStandReminder() {
 }
 
 function setStand() {
-    /// idk yet bro
-    document.getElementById('standtext').style.display = 'block';
+    let input = document.getElementById('standInput').value;
+    let standtext = document.getElementById('standtext');
+    if (isNaN(input) || input <= 0) {
+        standtext.innerHTML = 'invalid input';
+    } else {
+        standInterval = input.valueOf();
+        standtext.innerHTML = 'you will be reminded to stand every ' + input + ' minutes';
+    }
+    standtext.style.display = 'block';
     document.getElementById('countdown').style.display = 'block';
 }
 
 function setSleep() {
-    /// also dk yet
-    document.getElementById('sleeptext').style.display = 'block';
+    bedtime = document.getElementById('sleepInput').value;
+    let sleeptext = document.getElementById('sleeptext');
+    sleeptext.style.display = 'block';
+    sleeptext.innerHTML = 'you have set your bedtime to: ' + bedtime
 }
