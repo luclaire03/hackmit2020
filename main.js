@@ -1,9 +1,11 @@
 let standInterval = 30; // in minutes
 let lastStand = new Date().getTime();
 let sinceStand = 0;     // time since last standing break, in minutes
-let bedtime;
-var reset = false;
 
+let hasBedtime = false;
+let bedtime;
+
+var reset = false;
 
 let updateStandTimer = setInterval(function() {
     let now = new Date().getTime();
@@ -16,11 +18,19 @@ let updateStandTimer = setInterval(function() {
     if (sinceStand >= standInterval) {
         showStandReminder()
     }
+    if (hasBedtime && now > bedtime.getTime()) {
+        showBedtimeReminder();
+    }
 }, 1000*60);
 
 function showStandReminder() {
     alert('break time! take a chance to move around.');
     reset = true;
+}
+
+function showBedtimeReminder() {
+    alert('time for bed!');
+    bedtime.setTime(bedtime.getTime() + 1000*60*60*24); // forward bedtime by 24 hrs after showing alert
 }
 
 function resetTime() {
@@ -47,9 +57,11 @@ function setSleep() {
         bedtime = new Date();
         bedtime.setHours(input.substring(0,2));
         bedtime.setMinutes(input.substring(3,5));
+        bedtime.setSeconds(0);
         if (bedtime.getTime() < Date.now()) {
             bedtime.setTime(bedtime.getTime() + 1000*60*60*24); // Make sure bedtime is after current time
         }
+        hasBedtime = true;
         sleeptext.innerHTML = 'you have set your bedtime to: ' + input;
     } else {
         sleeptext.innerHTML = 'invalid input';
