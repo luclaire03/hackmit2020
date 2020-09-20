@@ -42,12 +42,32 @@ function setStand() {
 
 function setSleep() {
     let input = document.getElementById('sleepInput').value;
+    let sleeptext = document.getElementById('sleeptext');
+    if (isValidTime(input)) {
+        bedtime = new Date();
+        bedtime.setHours(input.substring(0,2));
+        bedtime.setMinutes(input.substring(3,5));
+        if (bedtime.getTime() < Date.now()) {
+            bedtime.setTime(bedtime.getTime() + 1000*60*60*24); // Make sure bedtime is after current time
+        }
+        sleeptext.innerHTML = 'you have set your bedtime to: ' + input;
+    } else {
+        sleeptext.innerHTML = 'invalid input';
+    }
+    sleeptext.style.display = 'block';
+}
+
+function isValidTime(input) {
+    if (input.length != 5 || input.charAt(2) != ':') {
+        return false;
+    }
     let hours = input.substring(0,2);
     let minutes = input.substring(3,5);
-    bedtime = new Date();
-    bedtime.setHours(hours);
-    bedtime.setMinutes(minutes);
-    let sleeptext = document.getElementById('sleeptext');
-    sleeptext.style.display = 'block';
-    sleeptext.innerHTML = 'you have set your bedtime to: ' + input;
+    if (isNaN(hours) || hours < 0 || hours > 23) {
+        return false;
+    }
+    if (isNaN(minutes) || minutes < 0 || minutes > 59) {
+        return false;
+    }
+    return true;
 }
