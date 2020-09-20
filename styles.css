@@ -2,6 +2,19 @@
     text-align: center;
     padding-top: 5%;
     padding-bottom: 2%;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+#title {
+    border-style: solid;
+    border: 2%;
+    border-color: paleturquoise;
+}
+
+img {
+    width: 25%;
+    height: 25%;
 }
 
 #input {
@@ -18,4 +31,25 @@
 
 #timertext {
     padding-bottom: 1%;
+}
+
+#standtext {
+    padding-bottom: 2%;
+}
+
+.label {
+    background-color: #c9f2ed;
+    max-width: 50%;
+}
+
+.setBtn {
+    border-color: teal teal teal teal;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.resetBtn {
+    border-color: teal teal teal teal;
+    border-radius: 5px;
+    box-shadow: none;
 }
