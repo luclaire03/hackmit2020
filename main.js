@@ -1,6 +1,7 @@
 let standInterval = 30; // in minutes
 let lastStand = new Date().getTime();
 let sinceStand = 0;     // time since last standing break, in minutes
+let bedtime;
 var reset = false;
 
 
@@ -40,14 +41,13 @@ function setStand() {
 }
 
 function setSleep() {
-    bedtime = document.getElementById('sleepInput').value;
+    let input = document.getElementById('sleepInput').value;
+    let hours = input.substring(0,2);
+    let minutes = input.substring(3,5);
+    bedtime = new Date();
+    bedtime.setHours(hours);
+    bedtime.setMinutes(minutes);
     let sleeptext = document.getElementById('sleeptext');
-    var numMonth = Date().getMonth();
-    var date = Date().getDate();
-    var year = Date().getFullYear();
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    month = months[numMonth];
-    let bedtimeNum = Date(month, str(date), str(year), str(input) + ':00').getTime();
     sleeptext.style.display = 'block';
-    sleeptext.innerHTML = 'you have set your bedtime to: ' + bedtime;
+    sleeptext.innerHTML = 'you have set your bedtime to: ' + input;
 }
