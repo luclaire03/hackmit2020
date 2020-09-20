@@ -41,7 +41,7 @@ function setStand() {
     let input = document.getElementById('standInput').value;
     let standtext = document.getElementById('standtext');
     if (isNaN(input) || input <= 0) {
-        standtext.innerHTML = 'invalid input';
+        standtext.innerHTML = 'please enter a valid number!';
     } else {
         standInterval = input.valueOf();
         standtext.innerHTML = 'you will be reminded to stand every ' + input + ' minutes';
@@ -64,7 +64,7 @@ function setSleep() {
         hasBedtime = true;
         sleeptext.innerHTML = 'you have set your bedtime to: ' + input;
     } else {
-        sleeptext.innerHTML = 'invalid input';
+        sleeptext.innerHTML = 'please enter a valid time!';
     }
     sleeptext.style.display = 'block';
 }
